@@ -1,0 +1,89 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+
+int main()
+{
+
+    
+
+
+    std::cout << "Welcome to the Menu-Based Program!\n Please select an option:\n";
+    int choice, rows;
+    //int list;
+    std::string input;
+    std::istringstream iss(input);
+    std::vector<int> numbers;
+
+    do
+    {
+        std::cout << "\nPlease select an option : \n" << "1. Print Pattern.\n" <<"2. Filter Nambers \n" <<"3. Help \n"<<"4. Exit \n"
+            << "Option : ";
+        std::cin >> choice;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    
+        switch (choice)
+        {
+        case 1:
+            //code of Print Pattern
+            std::cout << "\n Enter the number of rows for the pattren : ";
+            std::cin >> rows;
+            //int x, j;
+            for (int i = 1; i <= rows; ++i) {
+                for (int j = 1; j <= i; ++j) {
+                    std::cout << "*";
+                }
+                std::cout << "\n";
+            } //return 0;
+            break;
+        case 2:
+            //code of Filter Nambers
+            std::cout << "Enter a list of whole numbers separated by spaces : ";
+
+           // std::string input;
+            std::getline(std::cin, input);
+            iss.clear();
+            iss.str(input);
+            //std::istringstream iss(input);
+
+            int number;
+            //std::vector<int> numbers;
+
+            while (iss >> number) {
+                // Check if the number is not between 13 and 19 (inclusive)
+                if (number < 13 || number > 19) {
+                    numbers.push_back(number);
+                }
+            }
+
+            // Display the modified list
+            std::cout << "Filtered list : ";
+            for (int num : numbers) {
+                std::cout << num << " ";
+            }
+            std::cout << std::endl;
+
+
+            break;
+        case 3:
+            //code of Help
+            std::cout << "\n \t\t\t ..Help.. \n option 1: Print a specific pattern with 'n' rows. \n option 2: Remove numbers berween 13 and 19 from a list of whole numbers. \n option 3: Display this help massage.\n option 4: Exit the program. \n";
+            break;
+        case 4:
+            //code of Exit
+            std::cout << "\n Exitting the program ...Goodbye! ";
+            exit(4);
+            break;
+
+        default:
+            std::cout << "Not a Valid choice.\n" << "Choose againe any number between 1-4.\n";
+            break;
+        }
+
+    } while (choice != 4);
+    
+     return 0; 
+    
+
+}
